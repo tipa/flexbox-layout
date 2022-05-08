@@ -1398,7 +1398,12 @@ public class FlexboxLayoutManager extends RecyclerView.LayoutManager implements 
         if (lastView == null) {
             return;
         }
-        int currentLineIndex = mFlexboxHelper.mIndexToFlexLine[getPosition(lastView)];
+        int lastViewPosition = getPosition(lastView);
+        // https://github.com/google/flexbox-layout/issues/363
+        if (lastViewPosition == NO_POSITION) {
+            return;
+        }
+        int currentLineIndex = mFlexboxHelper.mIndexToFlexLine[lastViewPosition];
         if (currentLineIndex == NO_POSITION) {
             return;
         }
