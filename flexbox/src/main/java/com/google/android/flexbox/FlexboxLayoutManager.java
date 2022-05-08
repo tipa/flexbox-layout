@@ -2073,6 +2073,10 @@ public class FlexboxLayoutManager extends RecyclerView.LayoutManager implements 
             }
             mLayoutState.mOffset = mOrientationHelper.getDecoratedEnd(lastVisible);
             int lastVisiblePosition = getPosition(lastVisible);
+            // https://github.com/google/flexbox-layout/issues/363
+            if (lastVisiblePosition == NO_POSITION) {
+                return;
+            }
             int lastVisibleLinePosition = mFlexboxHelper.mIndexToFlexLine[lastVisiblePosition];
             FlexLine lastVisibleLine = mFlexLines.get(lastVisibleLinePosition);
 
@@ -2129,6 +2133,10 @@ public class FlexboxLayoutManager extends RecyclerView.LayoutManager implements 
             }
             mLayoutState.mOffset = mOrientationHelper.getDecoratedStart(firstVisible);
             int firstVisiblePosition = getPosition(firstVisible);
+            // https://github.com/google/flexbox-layout/issues/363
+            if (firstVisiblePosition == NO_POSITION) {
+                return;
+            }
             int firstVisibleLinePosition = mFlexboxHelper.mIndexToFlexLine[firstVisiblePosition];
             FlexLine firstVisibleLine = mFlexLines.get(firstVisibleLinePosition);
 

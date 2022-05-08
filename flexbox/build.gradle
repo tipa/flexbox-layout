@@ -15,7 +15,7 @@
  */
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android'
 apply from: 'maven-puglisher-plugin.gradle'
 
 android {
@@ -24,8 +24,6 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "$mavenVersion"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -43,8 +41,8 @@ android {
 }
 
 dependencies {
-    compileOnly "androidx.core:core:${rootProject.androidxCoreVersion}"
-    compileOnly "androidx.recyclerview:recyclerview:${rootProject.androidxRecyclerViewVersion}"
+    compileOnly "androidx.core:core:1.7.0"
+    compileOnly "androidx.recyclerview:recyclerview:1.2.1"
 
     testImplementation "junit:junit:${rootProject.junitVersion}"
 
