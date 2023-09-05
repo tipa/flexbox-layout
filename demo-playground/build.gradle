@@ -18,7 +18,7 @@ apply plugin: 'com.android.application'
 //apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
         applicationId "com.google.android.apps.flexbox"
@@ -36,19 +36,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'com.google.android.apps.flexbox'
 }
 
 dependencies {
     implementation project(":flexbox")
-    //implementation "androidx.annotation:annotation:${rootProject.androidxAnnotationVersion}"
-    //implementation "androidx.appcompat:appcompat:${rootProject.androidxAppCompatVersion}"
-    //implementation "androidx.preference:preference:${rootProject.androidxPreferenceVersion}"
-    //implementation "com.google.android.material:material:${rootProject.materialVersion}"
+    implementation "androidx.annotation:annotation:${rootProject.androidxAnnotationVersion}"
+    implementation "androidx.appcompat:appcompat:${rootProject.androidxAppCompatVersion}"
+    implementation "androidx.preference:preference:${rootProject.androidxPreferenceVersion}"
+    implementation "com.google.android.material:material:${rootProject.materialVersion}"
     //implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
-    //testImplementation "junit:junit:${rootProject.ext.junitVersion}"
-    //androidTestImplementation "androidx.annotation:annotation:${rootProject.androidxAnnotationVersion}"
-    //androidTestImplementation "androidx.test:runner:${rootProject.androidxTestVersion}"
-    //androidTestImplementation "androidx.test:rules:${rootProject.androidxTestVersion}"
-    //androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.androidxEspressoVersion}"
+    testImplementation "junit:junit:${rootProject.ext.junitVersion}"
+    androidTestImplementation "androidx.annotation:annotation:${rootProject.androidxAnnotationVersion}"
+    androidTestImplementation "androidx.test:runner:${rootProject.androidxTestRunnerVersion}"
+    androidTestImplementation "androidx.test:rules:${rootProject.androidxTestRulesVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.androidxEspressoVersion}"
 }
