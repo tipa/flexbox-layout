@@ -37,8 +37,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
-import androidx.core.view.MarginLayoutParamsCompat;
-import androidx.core.widget.CompoundButtonCompat;
 
 /**
  * Offers various calculations for Flexbox to use the common logic between the classes such as
@@ -647,7 +645,7 @@ class FlexboxHelper {
         int minWidth = flexItem.getMinWidth();
         int minHeight = flexItem.getMinHeight();
 
-        Drawable drawable = CompoundButtonCompat.getButtonDrawable(compoundButton);
+        Drawable drawable = compoundButton.getButtonDrawable();
         int drawableMinWidth = drawable == null ? 0 : drawable.getMinimumWidth();
         int drawableMinHeight = drawable == null ? 0 : drawable.getMinimumHeight();
         flexItem.setMinWidth(minWidth == NOT_SET ? drawableMinWidth : minWidth);
@@ -1895,8 +1893,8 @@ class FlexboxHelper {
                 ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams)
                         view.getLayoutParams();
                 int leftFromCrossAxis = (crossSize - view.getMeasuredWidth()
-                        + MarginLayoutParamsCompat.getMarginStart(lp)
-                        - MarginLayoutParamsCompat.getMarginEnd(lp)) / 2;
+                        + lp.getMarginStart()
+                        - lp.getMarginEnd()) / 2;
                 if (!isRtl) {
                     view.layout(left + leftFromCrossAxis, top, right + leftFromCrossAxis, bottom);
                 } else {

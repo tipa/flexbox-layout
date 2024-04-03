@@ -34,7 +34,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.OrientationHelper;
@@ -1015,22 +1014,22 @@ public class FlexboxLayoutManager extends RecyclerView.LayoutManager implements 
         int layoutDirection = getLayoutDirection();
         switch (mFlexDirection) {
             case FlexDirection.ROW:
-                mIsRtl = layoutDirection == ViewCompat.LAYOUT_DIRECTION_RTL;
+                mIsRtl = layoutDirection == View.LAYOUT_DIRECTION_RTL;
                 mFromBottomToTop = mFlexWrap == FlexWrap.WRAP_REVERSE;
                 break;
             case FlexDirection.ROW_REVERSE:
-                mIsRtl = layoutDirection != ViewCompat.LAYOUT_DIRECTION_RTL;
+                mIsRtl = layoutDirection != View.LAYOUT_DIRECTION_RTL;
                 mFromBottomToTop = mFlexWrap == FlexWrap.WRAP_REVERSE;
                 break;
             case FlexDirection.COLUMN:
-                mIsRtl = layoutDirection == ViewCompat.LAYOUT_DIRECTION_RTL;
+                mIsRtl = layoutDirection == View.LAYOUT_DIRECTION_RTL;
                 if (mFlexWrap == FlexWrap.WRAP_REVERSE) {
                     mIsRtl = !mIsRtl;
                 }
                 mFromBottomToTop = false;
                 break;
             case FlexDirection.COLUMN_REVERSE:
-                mIsRtl = layoutDirection == ViewCompat.LAYOUT_DIRECTION_RTL;
+                mIsRtl = layoutDirection == View.LAYOUT_DIRECTION_RTL;
                 if (mFlexWrap == FlexWrap.WRAP_REVERSE) {
                     mIsRtl = !mIsRtl;
                 }
@@ -1194,6 +1193,10 @@ public class FlexboxLayoutManager extends RecyclerView.LayoutManager implements 
         int firstFoundPosition = getPosition(firstFound);
         int firstFoundLinePosition = mFlexboxHelper.mIndexToFlexLine[firstFoundPosition];
         if (firstFoundLinePosition == NO_POSITION) {
+            return null;
+        }
+        // https://github.com/google/flexbox-layout/issues/363
+        if (firstFoundLinePosition >= mFlexLines.size()) {
             return null;
         }
         FlexLine firstFoundLine = mFlexLines.get(firstFoundLinePosition);
@@ -2029,7 +2032,7 @@ public class FlexboxLayoutManager extends RecyclerView.LayoutManager implements 
         int parentLength = isMainAxisHorizontal ? mParent.getWidth() : mParent.getHeight();
         int mainAxisLength = isMainAxisHorizontal ? getWidth() : getHeight();
 
-        boolean layoutRtl = getLayoutDirection() == ViewCompat.LAYOUT_DIRECTION_RTL;
+        boolean layoutRtl = getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
         if (layoutRtl) {
             int absDelta = Math.abs(delta);
             if (delta < 0) {

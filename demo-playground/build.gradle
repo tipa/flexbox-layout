@@ -15,7 +15,7 @@
  */
 
 apply plugin: 'com.android.application'
-//apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdk rootProject.ext.compileSdkVersion
@@ -36,6 +36,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
     namespace 'com.google.android.apps.flexbox'
 }
 
@@ -43,9 +47,9 @@ dependencies {
     implementation project(":flexbox")
     implementation "androidx.annotation:annotation:${rootProject.androidxAnnotationVersion}"
     implementation "androidx.appcompat:appcompat:${rootProject.androidxAppCompatVersion}"
-    implementation "androidx.preference:preference:${rootProject.androidxPreferenceVersion}"
+    implementation "androidx.preference:preference-ktx:${rootProject.androidxPreferenceVersion}"
     implementation "com.google.android.material:material:${rootProject.materialVersion}"
-    //implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
     androidTestImplementation "androidx.annotation:annotation:${rootProject.androidxAnnotationVersion}"

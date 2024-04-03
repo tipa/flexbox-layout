@@ -36,7 +36,6 @@ import java.util.List;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 
 /**
  * A layout that arranges its children in a way its attributes can be specified like the
@@ -562,26 +561,26 @@ public class FlexboxLayout extends ViewGroup implements FlexContainer {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        int layoutDirection = ViewCompat.getLayoutDirection(this);
+        int layoutDirection = getLayoutDirection();
         boolean isRtl;
         switch (mFlexDirection) {
             case FlexDirection.ROW:
-                isRtl = layoutDirection == ViewCompat.LAYOUT_DIRECTION_RTL;
+                isRtl = layoutDirection == View.LAYOUT_DIRECTION_RTL;
                 layoutHorizontal(isRtl, left, top, right, bottom);
                 break;
             case FlexDirection.ROW_REVERSE:
-                isRtl = layoutDirection != ViewCompat.LAYOUT_DIRECTION_RTL;
+                isRtl = layoutDirection != View.LAYOUT_DIRECTION_RTL;
                 layoutHorizontal(isRtl, left, top, right, bottom);
                 break;
             case FlexDirection.COLUMN:
-                isRtl = layoutDirection == ViewCompat.LAYOUT_DIRECTION_RTL;
+                isRtl = layoutDirection == View.LAYOUT_DIRECTION_RTL;
                 if (mFlexWrap == FlexWrap.WRAP_REVERSE) {
                     isRtl = !isRtl;
                 }
                 layoutVertical(isRtl, false, left, top, right, bottom);
                 break;
             case FlexDirection.COLUMN_REVERSE:
-                isRtl = layoutDirection == ViewCompat.LAYOUT_DIRECTION_RTL;
+                isRtl = layoutDirection == View.LAYOUT_DIRECTION_RTL;
                 if (mFlexWrap == FlexWrap.WRAP_REVERSE) {
                     isRtl = !isRtl;
                 }
@@ -910,33 +909,33 @@ public class FlexboxLayout extends ViewGroup implements FlexContainer {
             return;
         }
 
-        int layoutDirection = ViewCompat.getLayoutDirection(this);
+        int layoutDirection = getLayoutDirection();
         boolean isRtl;
         boolean fromBottomToTop = false;
         switch (mFlexDirection) {
             case FlexDirection.ROW:
-                isRtl = layoutDirection == ViewCompat.LAYOUT_DIRECTION_RTL;
+                isRtl = layoutDirection == View.LAYOUT_DIRECTION_RTL;
                 if (mFlexWrap == FlexWrap.WRAP_REVERSE) {
                     fromBottomToTop = true;
                 }
                 drawDividersHorizontal(canvas, isRtl, fromBottomToTop);
                 break;
             case FlexDirection.ROW_REVERSE:
-                isRtl = layoutDirection != ViewCompat.LAYOUT_DIRECTION_RTL;
+                isRtl = layoutDirection != View.LAYOUT_DIRECTION_RTL;
                 if (mFlexWrap == FlexWrap.WRAP_REVERSE) {
                     fromBottomToTop = true;
                 }
                 drawDividersHorizontal(canvas, isRtl, fromBottomToTop);
                 break;
             case FlexDirection.COLUMN:
-                isRtl = layoutDirection == ViewCompat.LAYOUT_DIRECTION_RTL;
+                isRtl = layoutDirection == View.LAYOUT_DIRECTION_RTL;
                 if (mFlexWrap == FlexWrap.WRAP_REVERSE) {
                     isRtl = !isRtl;
                 }
                 drawDividersVertical(canvas, isRtl, false);
                 break;
             case FlexDirection.COLUMN_REVERSE:
-                isRtl = layoutDirection == ViewCompat.LAYOUT_DIRECTION_RTL;
+                isRtl = layoutDirection == View.LAYOUT_DIRECTION_RTL;
                 if (mFlexWrap == FlexWrap.WRAP_REVERSE) {
                     isRtl = !isRtl;
                 }
