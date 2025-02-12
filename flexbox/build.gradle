@@ -35,15 +35,15 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     namespace 'com.google.android.flexbox'
     //testNamespace 'com.google.android.flexbox.test'
 }
 
 dependencies {
-    compileOnly "androidx.recyclerview:recyclerview:1.3.2"
+    compileOnly "androidx.recyclerview:recyclerview:1.4.0"
 
     //testImplementation "junit:junit:${rootProject.junitVersion}"
 
