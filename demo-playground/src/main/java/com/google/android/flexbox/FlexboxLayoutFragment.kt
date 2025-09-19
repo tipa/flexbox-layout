@@ -47,8 +47,7 @@ class FlexboxLayoutFragment : Fragment() {
         val fragmentHelper = FragmentHelper(activity, flexContainer)
         fragmentHelper.initializeViews()
         if (savedInstanceState != null) {
-            val flexItems = savedInstanceState
-                    .getParcelableArrayList<FlexItem>(FLEX_ITEMS_KEY)!!
+            val flexItems = savedInstanceState.getParcelableArrayList<FlexItem>(FLEX_ITEMS_KEY)!!
             flexContainer.removeAllViews()
             for (i in flexItems.indices) {
                 val flexItem = flexItems[i]

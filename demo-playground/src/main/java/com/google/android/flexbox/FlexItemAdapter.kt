@@ -39,7 +39,7 @@ internal class FlexItemAdapter(private val activity: AppCompatActivity,
     }
 
     override fun onBindViewHolder(holder: FlexItemViewHolder, position: Int) {
-        val adapterPosition = holder.adapterPosition
+        val adapterPosition = holder.bindingAdapterPosition
         // TODO: More optimized set the click listener inside the view holder
         holder.itemView.setOnClickListener(FlexItemClickListener(activity,
                 FlexItemChangedListenerImplRecyclerView(flexContainer, this),

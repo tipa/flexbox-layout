@@ -30,7 +30,7 @@ class FlexItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val textView: TextView = itemView.findViewById(R.id.textview)
 
     fun bindTo(params: RecyclerView.LayoutParams) {
-        val adapterPosition = adapterPosition
+        val adapterPosition = bindingAdapterPosition
         textView.apply {
             text = (adapterPosition + 1).toString()
             setBackgroundResource(R.drawable.flex_item_background)

@@ -65,11 +65,7 @@ internal class FlexItemEditFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            setStyle(STYLE_NORMAL, android.R.style.Theme_Material_Light_Dialog)
-        } else {
-            setStyle(STYLE_NORMAL, android.R.style.Theme_Dialog)
-        }
+        setStyle(STYLE_NORMAL, android.R.style.Theme_Material_Light_Dialog)
         arguments?.let {
             flexItem = it.getParcelable(FLEX_ITEM_KEY)!!
             viewIndex = it.getInt(VIEW_INDEX_KEY)
