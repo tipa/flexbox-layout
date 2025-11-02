@@ -31,22 +31,22 @@ android {
     }
     buildTypes {
         release {
-            shrinkResources true
+            shrinkResources = true
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-    namespace 'com.google.android.flexbox.apps.catgallery'
+    namespace = 'com.google.android.flexbox.apps.catgallery'
 }
 
 dependencies {
     implementation project(path: ":flexbox")
     implementation "androidx.appcompat:appcompat:1.7.1"
     implementation "androidx.recyclerview:recyclerview:1.4.0"
-    implementation "com.google.android.material:material:${rootProject.materialVersion}"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${rootProject.kotlinVersion}"
+    implementation "com.google.android.material:material:1.13.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.2.0"
 }

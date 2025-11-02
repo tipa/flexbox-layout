@@ -22,7 +22,7 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                from components.findByName('release')
+                from components.named('release')
 
                 groupId = "$mavenGroup"
                 artifactId = "$mavenArtifactId"

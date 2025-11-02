@@ -31,29 +31,29 @@ android {
     }
     buildTypes {
         release {
-            shrinkResources true
+            shrinkResources = true
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-    namespace 'com.google.android.apps.flexbox'
+    namespace = 'com.google.android.apps.flexbox'
 }
 
 dependencies {
     implementation project(":flexbox")
-    implementation "androidx.annotation:annotation:${rootProject.androidxAnnotationVersion}"
-    implementation "androidx.appcompat:appcompat:${rootProject.androidxAppCompatVersion}"
-    implementation "androidx.preference:preference-ktx:${rootProject.androidxPreferenceVersion}"
-    implementation "com.google.android.material:material:${rootProject.materialVersion}"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation "androidx.annotation:annotation:1.9.1"
+    implementation "androidx.appcompat:appcompat:1.7.1"
+    implementation "androidx.preference:preference-ktx:1.2.1"
+    implementation "com.google.android.material:material:1.13.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.2.0"
 
-    testImplementation "junit:junit:${rootProject.ext.junitVersion}"
-    androidTestImplementation "androidx.annotation:annotation:${rootProject.androidxAnnotationVersion}"
-    androidTestImplementation "androidx.test:runner:${rootProject.androidxTestRunnerVersion}"
-    androidTestImplementation "androidx.test:rules:${rootProject.androidxTestRulesVersion}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.androidxEspressoVersion}"
+    testImplementation "junit:junit:4.13.2"
+    androidTestImplementation "androidx.annotation:annotation:1.9.1"
+    androidTestImplementation "androidx.test:runner:1.7.0"
+    androidTestImplementation "androidx.test:rules:1.7.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.7.0"
 }
